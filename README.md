@@ -25,8 +25,17 @@ Este projeto tem como objetivo implementar um sistema simplificado de transferen
 ## Tecnologias Utilizadas
 
 - [Spring Boot](https://spring.io/projects/spring-boot)
+```http request
+http://localhost:8080/
+```
 - [Swagger](https://swagger.io/)
+```http request
+http://localhost:8080/swagger-ui/index.html#
+```
 - [H2 Database](https://www.h2database.com/html/main.html)
+```http request
+http://localhost:8080/h2-console
+```
 
 ## Instruções de Uso com Spring Boot
 
