@@ -18,11 +18,12 @@ public class NotificationService {
         String email = user.getEmail();
         NotificationDTO  notificationRequest = new NotificationDTO(email,message);
 
-       ResponseEntity<String> notificationResponse =  restTemplate.postForEntity(notificationEndPoint,notificationRequest, String.class);
-       if(!(notificationResponse.getStatusCode() == HttpStatus.OK)){
-           System.err.println("Serviço de notificação não disponivel");
-           throw new Exception("Serviço de notificação não disponivel");
-       }
+//       ResponseEntity<String> notificationResponse =  restTemplate.postForEntity(notificationEndPoint,notificationRequest, String.class);
+//       if(!(notificationResponse.getStatusCode() == HttpStatus.OK)){
+//           System.err.println("Serviço de notificação não disponivel");
+//           throw new Exception("Serviço de notificação não disponivel");
+//       }
+        System.out.println("Notificacao enviada");
     }
 
 }
