@@ -1,10 +1,8 @@
 package com.picpaysimplificado.domain.user;
 
+import com.picpaysimplificado.dtos.UserDTO;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.math.BigDecimal;
 
@@ -13,8 +11,10 @@ import java.math.BigDecimal;
 @Getter
 @Setter
 @AllArgsConstructor
+@NoArgsConstructor
 @EqualsAndHashCode(of="id")
-public class User {
+@DiscriminatorColumn(name = "user_type", discriminatorType = DiscriminatorType.STRING)
+public abstract class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -27,6 +27,7 @@ public class User {
     private String password;
     private BigDecimal balance;
     @Enumerated(EnumType.STRING)
-    private UserType usertype;
+    @Column(name = "user_type",insertable=false, updatable=false)
+    private UserType userType;
 
 }
