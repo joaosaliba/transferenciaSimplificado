@@ -29,10 +29,13 @@ public class TransationService {
     @Autowired
     private RestTemplate restTemplate;
 
+    @Autowired
+    private NotificationService notificationService;
+
     private final String autorizationEndPoint ="https://run.mocky.io/v3/5794d450-d2e2-4412-8131-73d0293ac1cc";
 
     @Transactional
-    public void createTransation(TransationDTO transationDTO) throws Exception {
+    public Transation createTransation(TransationDTO transationDTO) throws Exception {
         User sender = this.userService.findUserById(transationDTO.senderId());
         User receiver = this.userService.findUserById(transationDTO.receiverId());
 
@@ -53,6 +56,9 @@ public class TransationService {
         trasationRepository.save(transation);
         userService.saveUser(sender);
         userService.saveUser(receiver);
+        this.notificationService.sendNotification(sender,"Transação realizada com sucesso");
+        this.notificationService.sendNotification(receiver,"Transação recebida com sucesso");
+        return  transation;
 
     }
 
